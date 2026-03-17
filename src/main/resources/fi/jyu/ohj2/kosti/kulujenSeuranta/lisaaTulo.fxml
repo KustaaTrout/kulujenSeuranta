@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="261.0" spacing="5.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="261.0" spacing="5.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.jyu.ohj2.kosti.kulujenSeuranta.controller.LisaaTuloController">
    <padding>
       <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
    </padding>
@@ -24,23 +24,23 @@
          </children>
       </HBox>
       <Label text="Kategoria" />
-      <ComboBox fx:id="tuloKategoria" prefWidth="150.0" />
+      <ComboBox fx:id="tuloKategoria" onAction="#handleTuloKategoria" prefWidth="150.0" />
       <Label text="Aihe" />
       <HBox prefHeight="54.0" prefWidth="253.0">
          <children>
-            <TextField fx:id="tuloText" prefHeight="45.0" prefWidth="212.0" />
+            <TextField fx:id="tuloText" onAction="#handleTuloTeksti" prefHeight="45.0" prefWidth="212.0" />
          </children>
       </HBox>
       <Label text="Summa" />
       <HBox prefHeight="24.0" prefWidth="221.0">
          <children>
-            <TextField fx:id="tSumma" prefHeight="25.0" prefWidth="73.0" />
-            <Button fx:id="tTallenna" mnemonicParsing="false" text="Tallenna" textFill="#217512">
+            <TextField fx:id="tSumma" onAction="#handleTSumma" prefHeight="25.0" prefWidth="73.0" />
+            <Button fx:id="tTallenna" mnemonicParsing="false" onAction="#handleTTallenna" text="Tallenna" textFill="#217512">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="tPeruuta" mnemonicParsing="false" text="Peruuta" textFill="#a81515" />
+            <Button fx:id="tPeruuta" mnemonicParsing="false" onAction="#handleTPeruuta" text="Peruuta" textFill="#a81515" />
          </children>
       </HBox>
    </children>

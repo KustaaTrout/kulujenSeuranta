@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="261.0" spacing="5.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.jyu.ohj2.kosti.kulujenSeuranta.controller.lisaaMenoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="261.0" spacing="5.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fi.jyu.ohj2.kosti.kulujenSeuranta.controller.LisaaMenoController">
    <padding>
       <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
    </padding>
@@ -37,7 +37,7 @@
       <HBox prefHeight="24.0" prefWidth="221.0">
          <children>
             <TextField fx:id="mSumma" onAction="#handleMSumma" prefHeight="25.0" prefWidth="73.0" />
-            <Button fx:id="mTallenna" mnemonicParsing="false" onAction="#handleMTAllenna" text="Tallenna" textFill="#217512">
+            <Button fx:id="mTallenna" mnemonicParsing="false" onAction="#handleMTallenna" text="Tallenna" textFill="#217512">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
