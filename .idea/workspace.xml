@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen">
       <change afterPath="$PROJECT_DIR$/../../ohj2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/muokkaus.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +54,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.App.executor": "Run",
+    "Application.Main.executor": "Run",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -90,7 +96,7 @@
       <updated>1773660924957</updated>
       <workItem from="1773660926498" duration="6213000" />
       <workItem from="1773745720816" duration="2465000" />
-      <workItem from="1773751050741" duration="6703000" />
+      <workItem from="1773751050741" duration="13364000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -99,7 +105,14 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1773757364345</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen">
+      <option name="closed" value="true" />
+      <created>1773758602716</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1773758602716</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +131,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille." />
+    <MESSAGE value="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen" />
   </component>
 </project>

@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,7 +50,12 @@ public class LisaaMenoController implements Initializable {
     }
     @FXML
     private void handleMPeruuta(){
-        System.out.println("Peruuta");
+        suljeIkkuna();
+    }
+
+    private void suljeIkkuna() {
+        Stage stage = (Stage) mPeruuta.getScene().getWindow();
+        stage.close();
     }
 
 
