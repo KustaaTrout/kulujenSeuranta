@@ -25,5 +25,6 @@ public class Tapahtuma {
     public double getSumma() {return summa;}
     public Tyyppi getTyyppi() {return tyyppi;}
     public boolean isPakollinen() {return pakollinen;}
+    public void setKategoria(Kategoria kategoria) {this.kategoria = kategoria;}
 
 }

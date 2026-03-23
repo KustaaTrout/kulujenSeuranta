@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -32,48 +31,23 @@ public class MainController implements Initializable {
 
     private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
 
-    @FXML
-    private DatePicker alkuPvmValitsin;
-    @FXML
-    private DatePicker loppuPvmValitsin;
-    @FXML
-    private ComboBox<Kategoria> kategoriaBox;
-    @FXML
-    private Button kategoriaButton;
-    @FXML
-    private CheckBox vainPakollisetCheck;
-    // lisää tableviewiin tyypitys!
-    @FXML
-    private TableView<Tapahtuma> tapahtumatTable;
-    @FXML
-    private TextField menotYhteensaField;
-    @FXML
-    private TextField tulotYhteensaField;
-    @FXML
-    private Button lisaaTuloButton;
-    @FXML
-    private Button lisaaMenoButton;
-    @FXML
-    private TableColumn<Tapahtuma, LocalDate> pvmCol;
-    @FXML
-    private TableColumn<Tapahtuma, Double> summaCol;
-    @FXML
-    private TableColumn<Tapahtuma, String> aiheCol;
-    @FXML
-    private TableColumn<Tapahtuma, Kategoria> kategoriaCol;
+    @FXML private DatePicker alkuPvmValitsin;
+    @FXML private DatePicker loppuPvmValitsin;
+    @FXML private ComboBox<Kategoria> kategoriaBox;
+    @FXML private Button kategoriaButton;
+    @FXML private CheckBox vainPakollisetCheck;
+    @FXML private TableView<Tapahtuma> tapahtumatTable;
+    @FXML private TextField menotYhteensaField;
+    @FXML private TextField tulotYhteensaField;
+    @FXML private Button lisaaTuloButton;
+    @FXML private Button lisaaMenoButton;
+    @FXML private TableColumn<Tapahtuma, LocalDate> pvmCol;
+    @FXML private TableColumn<Tapahtuma, Double> summaCol;
+    @FXML private TableColumn<Tapahtuma, String> aiheCol;
+    @FXML private TableColumn<Tapahtuma, Kategoria> kategoriaCol;
 
 
-
-
-    public void lisaaTapahtuma(Tapahtuma tapahtuma) {
-        tapahtumat.add(tapahtuma);
-        //tapahtumatTable.refresh();
-
-    }
-
-
-
-    //  Tapahtumankäsittelijät
+    //  Tapahtumakäsittelijät
     @FXML
     private void handleLisaaTulo() {
         try {
@@ -127,6 +101,9 @@ public class MainController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("kategoriaMuokkaus.fxml"));
             Parent root = loader.load();
+            KategoriaMuokkausController controller = loader.getController();
+            controller.setMainController(this);
+
             Scene scene = new Scene(root);
 
             Stage dialogi = new Stage();
@@ -149,7 +126,6 @@ public class MainController implements Initializable {
         System.out.println("Kategoria valitsin");
     }
 
-
     @FXML
     private void handleVainPakolliset(){
         System.out.println("Listaa vain pakolliset");
@@ -165,4 +141,15 @@ public class MainController implements Initializable {
         System.out.println("Loppu pvm valitsin");
     }
 
+    public ObservableList<Tapahtuma> getTapahtumat() {
+        return tapahtumat;
+    }
+
+    public void lisaaTapahtuma(Tapahtuma tapahtuma) {
+        tapahtumat.add(tapahtuma);
+        paivitaTaulukko();
+    }
+    public void paivitaTaulukko() {
+        tapahtumatTable.refresh();
+    }
 }

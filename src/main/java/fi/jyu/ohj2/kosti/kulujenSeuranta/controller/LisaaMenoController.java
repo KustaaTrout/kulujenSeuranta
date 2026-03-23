@@ -2,11 +2,11 @@ package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tyyppi;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.service.KategoriaService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -15,35 +15,25 @@ public class LisaaMenoController implements Initializable {
 
     private MainController mainController;
 
-    @FXML
-    private ComboBox<Kategoria> menoKategoria;
-    @FXML
-    private TextField menoTeksti;
-    @FXML
-    private CheckBox menoCheckbox;
-    @FXML
-    private TextField mSumma;
-    @FXML
-    private Button mTallenna;
-    @FXML
-    private Button mPeruuta;
-    @FXML
-    private DatePicker menoPvmValitsin;
-    @FXML
-    private Label mKategoriaVirheLabel;
-    @FXML
-    private Label mAiheVirheLabel;
-    @FXML
-    private Label mSummaVirheLabel;
+    @FXML private ComboBox<Kategoria> menoKategoria;
+    @FXML private TextField menoTeksti;
+    @FXML private CheckBox menoCheckbox;
+    @FXML private TextField mSumma;
+    @FXML private Button mTallenna;
+    @FXML private Button mPeruuta;
+    @FXML private DatePicker menoPvmValitsin;
+    @FXML private Label mKategoriaVirheLabel;
+    @FXML private Label mAiheVirheLabel;
+    @FXML private Label mSummaVirheLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menoKategoria.getItems().addAll(
-                new Kategoria("Vuokra", Tyyppi.MENO),
-                new Kategoria("Kuntosalimaksu", Tyyppi.MENO)
+        menoKategoria.setItems(
+                KategoriaService.getKategoria().filtered(k -> k.getTyyppi() == Tyyppi.MENO)
         );
         menoPvmValitsin.setValue(LocalDate.now());
     }
+    //Tapahtumakäsittelijät
     @FXML
     private void handleMenoKategoria(){
         System.out.println("Meno-kategoria valitsin");

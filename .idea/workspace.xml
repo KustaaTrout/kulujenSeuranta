@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty luokat Tapahtuma, Kategoria ja Tyyppi(enum). Tyypitetty TableView-elementit.">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi.">
       <change afterPath="$PROJECT_DIR$/../../ohj2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/kategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +44,9 @@
     &quot;accountId&quot;: &quot;4176dc42-8f5a-4d78-ab63-8f03c92619bd&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -95,7 +100,7 @@
       <updated>1773660924957</updated>
       <workItem from="1773660926498" duration="6213000" />
       <workItem from="1773745720816" duration="2465000" />
-      <workItem from="1773751050741" duration="26061000" />
+      <workItem from="1773751050741" duration="33371000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -125,7 +130,14 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1774252682586</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi.">
+      <option name="closed" value="true" />
+      <created>1774263550773</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1774263550773</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +159,7 @@
     <MESSAGE value="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen" />
     <MESSAGE value="Lisätty kategorioiden muokkaus-ikkuna, controlleri, fx:id:t ja toteutettu ikkunoille sulkemis-metodit." />
     <MESSAGE value="Lisätty luokat Tapahtuma, Kategoria ja Tyyppi(enum). Tyypitetty TableView-elementit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lisätty luokat Tapahtuma, Kategoria ja Tyyppi(enum). Tyypitetty TableView-elementit." />
+    <MESSAGE value="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi." />
   </component>
 </project>
