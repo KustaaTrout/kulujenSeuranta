@@ -1,19 +1,22 @@
 package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tyyppi;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class LisaaMenoController implements Initializable {
 
+    private MainController mainController;
+
     @FXML
-    private ComboBox<String> menoKategoria;
+    private ComboBox<Kategoria> menoKategoria;
     @FXML
     private TextField menoTeksti;
     @FXML
@@ -24,9 +27,22 @@ public class LisaaMenoController implements Initializable {
     private Button mTallenna;
     @FXML
     private Button mPeruuta;
+    @FXML
+    private DatePicker menoPvmValitsin;
+    @FXML
+    private Label mKategoriaVirheLabel;
+    @FXML
+    private Label mAiheVirheLabel;
+    @FXML
+    private Label mSummaVirheLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        menoKategoria.getItems().addAll(
+                new Kategoria("Vuokra", Tyyppi.MENO),
+                new Kategoria("Kuntosalimaksu", Tyyppi.MENO)
+        );
+        menoPvmValitsin.setValue(LocalDate.now());
     }
     @FXML
     private void handleMenoKategoria(){
@@ -46,7 +62,23 @@ public class LisaaMenoController implements Initializable {
     }
     @FXML
     private void handleMTallenna(){
-        System.out.println("Tallenna meno");
+        String aihe = menoTeksti.getText();
+        Kategoria kategoria = menoKategoria.getValue();
+        double summa = Double.parseDouble(mSumma.getText());
+        LocalDate pvm = menoPvmValitsin.getValue();
+        boolean pakollinen = menoCheckbox.isSelected();
+
+        Tapahtuma tapahtuma = new Tapahtuma(
+                pvm,
+                aihe,
+                kategoria,
+                summa,
+                pakollinen,
+                Tyyppi.MENO
+        );
+        mainController.lisaaTapahtuma(tapahtuma);
+        suljeIkkuna();
+
     }
     @FXML
     private void handleMPeruuta(){
@@ -58,6 +90,7 @@ public class LisaaMenoController implements Initializable {
         stage.close();
     }
 
-
-
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 }

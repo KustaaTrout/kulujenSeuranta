@@ -2,12 +2,15 @@ package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.App;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -20,15 +23,21 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Write initialization code here
+        tapahtumatTable.setItems(tapahtumat);
+        pvmCol.setCellValueFactory(new PropertyValueFactory<>("pvm"));
+        summaCol.setCellValueFactory(new PropertyValueFactory<>("summa"));
+        aiheCol.setCellValueFactory(new PropertyValueFactory<>("aihe"));
+        kategoriaCol.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
     }
+
+    private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
 
     @FXML
     private DatePicker alkuPvmValitsin;
     @FXML
     private DatePicker loppuPvmValitsin;
     @FXML
-    private ComboBox<String> kategoriaBox;
+    private ComboBox<Kategoria> kategoriaBox;
     @FXML
     private Button kategoriaButton;
     @FXML
@@ -55,17 +64,29 @@ public class MainController implements Initializable {
 
 
 
+
+    public void lisaaTapahtuma(Tapahtuma tapahtuma) {
+        tapahtumat.add(tapahtuma);
+        //tapahtumatTable.refresh();
+
+    }
+
+
+
     //  Tapahtumankäsittelijät
     @FXML
     private void handleLisaaTulo() {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("lisaaTulo.fxml"));
             Parent root = loader.load();
+
+            LisaaTuloController controller = loader.getController();
+            controller.setMainController(this);
+
             Scene scene = new Scene(root);
 
             Stage dialogi = new Stage();
             dialogi.setScene(scene);
-
             dialogi.setTitle("Lisää uusi tulo");
             dialogi.setMinWidth(250);
             dialogi.setMinHeight(300);
@@ -82,8 +103,11 @@ public class MainController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("lisaaMeno.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
 
+            LisaaMenoController controller = loader.getController();
+            controller.setMainController(this);
+
+            Scene scene = new Scene(root);
             Stage dialogi = new Stage();
             dialogi.setScene(scene);
 
