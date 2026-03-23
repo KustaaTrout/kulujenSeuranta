@@ -1,5 +1,7 @@
 package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.App;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -32,7 +35,7 @@ public class MainController implements Initializable {
     private CheckBox vainPakollisetCheck;
     // lisää tableviewiin tyypitys!
     @FXML
-    private TableView tapahtumatTable;
+    private TableView<Tapahtuma> tapahtumatTable;
     @FXML
     private TextField menotYhteensaField;
     @FXML
@@ -42,13 +45,13 @@ public class MainController implements Initializable {
     @FXML
     private Button lisaaMenoButton;
     @FXML
-    private TableColumn pvmCol;
+    private TableColumn<Tapahtuma, LocalDate> pvmCol;
     @FXML
-    private TableColumn summaCol;
+    private TableColumn<Tapahtuma, Double> summaCol;
     @FXML
-    private TableColumn aiheCol;
+    private TableColumn<Tapahtuma, String> aiheCol;
     @FXML
-    private TableColumn kategoriaCol;
+    private TableColumn<Tapahtuma, Kategoria> kategoriaCol;
 
 
 

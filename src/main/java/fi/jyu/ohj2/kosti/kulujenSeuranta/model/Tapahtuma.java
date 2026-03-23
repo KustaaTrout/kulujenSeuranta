@@ -1,0 +1,29 @@
+package fi.jyu.ohj2.kosti.kulujenSeuranta.model;
+
+import java.time.LocalDate;
+
+public class Tapahtuma {
+    private LocalDate pvm;
+    private String aihe;
+    private Kategoria kategoria;
+    private double summa;
+    private boolean pakollinen;
+    private Tyyppi tyyppi;
+
+    public Tapahtuma(LocalDate pvm, String aihe, Kategoria kategoria, double summa, boolean pakollinen, Tyyppi tyyppi) {
+        this.pvm = pvm;
+        this.aihe = aihe;
+        this.kategoria = kategoria;
+        this.summa = summa;
+        this.pakollinen = pakollinen;
+        this.tyyppi = tyyppi;
+    }
+
+    public LocalDate getPvm() {return pvm;}
+    public String getAihe() {return aihe;}
+    public Kategoria getKategoria() {return kategoria;}
+    public double getSumma() {return summa;}
+    public Tyyppi getTyyppi() {return tyyppi;}
+    public boolean isPakollinen() {return pakollinen;}
+
+}
