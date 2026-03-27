@@ -29,7 +29,7 @@ public class LisaaMenoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         menoKategoria.setItems(
-                KategoriaService.getKategoria().filtered(k -> k.getTyyppi() == Tyyppi.MENO)
+                KategoriaService.getKategoriat().filtered(k -> k.getTyyppi() == Tyyppi.MENO)
         );
         menoPvmValitsin.setValue(LocalDate.now());
     }

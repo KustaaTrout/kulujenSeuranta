@@ -1,7 +1,10 @@
 package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.App;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kokoelma;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.service.KategoriaService;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.service.KokoelmaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -27,6 +31,8 @@ public class MainController implements Initializable {
         summaCol.setCellValueFactory(new PropertyValueFactory<>("summa"));
         aiheCol.setCellValueFactory(new PropertyValueFactory<>("aihe"));
         kategoriaCol.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
+        lataaData();
+        tallennaData();
     }
 
     private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
@@ -148,8 +154,27 @@ public class MainController implements Initializable {
     public void lisaaTapahtuma(Tapahtuma tapahtuma) {
         tapahtumat.add(tapahtuma);
         paivitaTaulukko();
+        tallennaData();
     }
     public void paivitaTaulukko() {
         tapahtumatTable.refresh();
+    }
+
+    public void lataaData(){
+        Kokoelma data = KokoelmaService.lataa();
+        tapahtumat.clear();
+        tapahtumat.addAll(data.getTapahtumat());
+
+        if(!data.getKategoriat().isEmpty()){
+            KategoriaService.getKategoriat().clear();
+            KategoriaService.getKategoriat().addAll(data.getKategoriat());
+        }
+    }
+
+    public void tallennaData(){
+        Kokoelma data = new Kokoelma();
+        data.setTapahtumat(new ArrayList<>(tapahtumat));
+        data.setKategoriat(new ArrayList<>(KategoriaService.getKategoriat()));
+        KokoelmaService.tallenna(data);
     }
 }

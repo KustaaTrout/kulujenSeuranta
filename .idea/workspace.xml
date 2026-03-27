@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi.">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna.">
       <change afterPath="$PROJECT_DIR$/../../ohj2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/kategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +84,26 @@
       <recent name="fi.jyu.ohj2.kosti.kulujenSeuranta" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fi.jyu.ohj2.kosti.kulujenSeuranta.Main" />
+      <module name="kulujenSeuranta" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fi.jyu.ohj2.kosti.kulujenSeuranta.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -100,7 +121,7 @@
       <updated>1773660924957</updated>
       <workItem from="1773660926498" duration="6213000" />
       <workItem from="1773745720816" duration="2465000" />
-      <workItem from="1773751050741" duration="33371000" />
+      <workItem from="1773751050741" duration="46603000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -137,7 +158,14 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1774263550773</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna.">
+      <option name="closed" value="true" />
+      <created>1774271829722</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1774271829722</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +188,7 @@
     <MESSAGE value="Lisätty kategorioiden muokkaus-ikkuna, controlleri, fx:id:t ja toteutettu ikkunoille sulkemis-metodit." />
     <MESSAGE value="Lisätty luokat Tapahtuma, Kategoria ja Tyyppi(enum). Tyypitetty TableView-elementit." />
     <MESSAGE value="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi." />
+    <MESSAGE value="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna." />
+    <option name="LAST_COMMIT_MESSAGE" value="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna." />
   </component>
 </project>

@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 public class LisaaTuloController implements Initializable {
 
     private MainController mainController;
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
     @FXML private ComboBox<Kategoria> tuloKategoria;
     @FXML private TextField tuloText;
@@ -28,7 +31,7 @@ public class LisaaTuloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tuloKategoria.setItems(
-                KategoriaService.getKategoria().filtered(k -> k.getTyyppi() == Tyyppi.TULO)
+                KategoriaService.getKategoriat().filtered(k -> k.getTyyppi() == Tyyppi.TULO)
         );
         tuloPvmValitsin.setValue(LocalDate.now());
     }
@@ -75,7 +78,5 @@ public class LisaaTuloController implements Initializable {
         stage.close();
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
+
 }

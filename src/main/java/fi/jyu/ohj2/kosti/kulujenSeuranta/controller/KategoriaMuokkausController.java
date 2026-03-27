@@ -35,9 +35,9 @@ public class KategoriaMuokkausController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tuloKategoriaList.setItems(KategoriaService.getKategoria().filtered(k -> k.getTyyppi() == Tyyppi.TULO)
+        tuloKategoriaList.setItems(KategoriaService.getKategoriat().filtered(k -> k.getTyyppi() == Tyyppi.TULO)
         );
-        menoKategoriaList.setItems(KategoriaService.getKategoria().filtered(k -> k.getTyyppi() == Tyyppi.MENO)
+        menoKategoriaList.setItems(KategoriaService.getKategoriat().filtered(k -> k.getTyyppi() == Tyyppi.MENO)
         );
         menoVaiTuloBox.getItems().addAll(Tyyppi.values());
     }
@@ -76,6 +76,7 @@ public class KategoriaMuokkausController implements Initializable {
 
         Kategoria kategoria = new Kategoria(nimi, tyyppi);
         KategoriaService.lisaaKategoria(kategoria);
+        mainController.tallennaData();
 
         lisaaUusiText.clear();
         menoVaiTuloBox.setValue(null);
