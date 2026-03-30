@@ -3,10 +3,12 @@ import fi.jyu.ohj2.kosti.kulujenSeuranta.App;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kokoelma;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
+import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tyyppi;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.service.KategoriaService;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.service.KokoelmaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,13 +22,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
+    private FilteredList<Tapahtuma> suodatettuLista;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tapahtumatTable.setItems(tapahtumat);
+        suodatettuLista = new FilteredList<>(tapahtumat, p -> true);
+        tapahtumatTable.setItems(suodatettuLista);
         pvmCol.setCellValueFactory(new PropertyValueFactory<>("pvm"));
         summaCol.setCellValueFactory(new PropertyValueFactory<>("summa"));
         aiheCol.setCellValueFactory(new PropertyValueFactory<>("aihe"));
@@ -34,8 +42,6 @@ public class MainController implements Initializable {
         lataaData();
         tallennaData();
     }
-
-    private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
 
     @FXML private DatePicker alkuPvmValitsin;
     @FXML private DatePicker loppuPvmValitsin;
@@ -47,13 +53,13 @@ public class MainController implements Initializable {
     @FXML private TextField tulotYhteensaField;
     @FXML private Button lisaaTuloButton;
     @FXML private Button lisaaMenoButton;
+    @FXML private Button PoistaValittuButton;
     @FXML private TableColumn<Tapahtuma, LocalDate> pvmCol;
     @FXML private TableColumn<Tapahtuma, Double> summaCol;
     @FXML private TableColumn<Tapahtuma, String> aiheCol;
     @FXML private TableColumn<Tapahtuma, Kategoria> kategoriaCol;
 
 
-    //  Tapahtumakäsittelijät
     @FXML
     private void handleLisaaTulo() {
         try {
@@ -101,6 +107,21 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    @FXML
+    private void handlePoistaValittuButton() {
+        Tapahtuma valittu = tapahtumatTable.getSelectionModel().getSelectedItem();
+        if (valittu == null) return;
+
+        Alert varmistus = new Alert(Alert.AlertType.CONFIRMATION);
+        varmistus.setTitle("Haluatko varmasti poistaa tapahtuman?");
+        varmistus.setHeaderText("Poistetaanko?");
+        varmistus.setContentText(valittu.getAihe());
+
+        Optional<ButtonType> tulos = varmistus.showAndWait();
+        if (tulos.isPresent() && tulos.get() == ButtonType.OK) {
+            poistaTapahtuma(valittu);
+        }
+    }
 
     @FXML
     private void handleKategoriaButton(){
@@ -134,7 +155,11 @@ public class MainController implements Initializable {
 
     @FXML
     private void handleVainPakolliset(){
-        System.out.println("Listaa vain pakolliset");
+        if(vainPakollisetCheck.isSelected()) {
+            suodatettuLista.setPredicate(p -> p.isPakollinen());
+        } else {
+            suodatettuLista.setPredicate(p -> true);
+        }
     }
 
     @FXML
@@ -154,8 +179,18 @@ public class MainController implements Initializable {
     public void lisaaTapahtuma(Tapahtuma tapahtuma) {
         tapahtumat.add(tapahtuma);
         paivitaTaulukko();
+        PaivitaSummaKentat();
         tallennaData();
     }
+
+    public void poistaTapahtuma(Tapahtuma poistettava) {
+        if (poistettava == null) return;
+        tapahtumat.remove(poistettava);
+        paivitaTaulukko();
+        PaivitaSummaKentat();
+        tallennaData();
+    }
+
     public void paivitaTaulukko() {
         tapahtumatTable.refresh();
     }
@@ -176,5 +211,20 @@ public class MainController implements Initializable {
         data.setTapahtumat(new ArrayList<>(tapahtumat));
         data.setKategoriat(new ArrayList<>(KategoriaService.getKategoriat()));
         KokoelmaService.tallenna(data);
+    }
+
+    public void PaivitaSummaKentat() {
+        double tulot = suodatettuLista.stream()
+                .filter(t -> t.getTyyppi() == Tyyppi.TULO)
+                .mapToDouble(Tapahtuma::getSumma)
+                .sum();
+
+        double menot = suodatettuLista.stream()
+                .filter(t -> t.getTyyppi() == Tyyppi.MENO)
+                .mapToDouble(Tapahtuma::getSumma)
+                .sum();
+
+        tulotYhteensaField.setText(String.format("%.2f", tulot));
+        menotYhteensaField.setText(String.format("%.2f", menot));
     }
 }

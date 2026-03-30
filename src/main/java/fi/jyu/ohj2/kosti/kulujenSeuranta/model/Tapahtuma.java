@@ -18,9 +18,7 @@ public class Tapahtuma {
         this.pakollinen = pakollinen;
         this.tyyppi = tyyppi;
     }
-
-    public Tapahtuma() {
-    }
+    public Tapahtuma() {}
 
     public LocalDate getPvm() {return pvm;}
     public String getAihe() {return aihe;}
