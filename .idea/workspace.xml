@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty lataus ja tallennus json-tiedostoon. &#10;Luotu Kokoelma-luokka ja KokoelmaService, joka käsittelee tallennuksen Jackson-kirjaston avulla. Oletuskategorioiden kovakoodaukset siirretty lataa()-metodin yhteyteen.">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä.">
       <change afterPath="$PROJECT_DIR$/../../ohj2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,8 @@
       <workItem from="1773660926498" duration="6213000" />
       <workItem from="1773745720816" duration="2465000" />
       <workItem from="1773751050741" duration="47652000" />
-      <workItem from="1774849815746" duration="4276000" />
+      <workItem from="1774849815746" duration="14189000" />
+      <workItem from="1774881420077" duration="1277000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -171,7 +170,14 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1774621253399</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä.">
+      <option name="closed" value="true" />
+      <created>1774854449488</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1774854449488</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +202,7 @@
     <MESSAGE value="Tehty tallennus tuloille ja menoille. Lisätty virhelabelit meno- ja tulo-fxml:iin ja controllereihin, ei vielä toimi." />
     <MESSAGE value="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna." />
     <MESSAGE value="Lisätty lataus ja tallennus json-tiedostoon. &#10;Luotu Kokoelma-luokka ja KokoelmaService, joka käsittelee tallennuksen Jackson-kirjaston avulla. Oletuskategorioiden kovakoodaukset siirretty lataa()-metodin yhteyteen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lisätty lataus ja tallennus json-tiedostoon. &#10;Luotu Kokoelma-luokka ja KokoelmaService, joka käsittelee tallennuksen Jackson-kirjaston avulla. Oletuskategorioiden kovakoodaukset siirretty lataa()-metodin yhteyteen." />
+    <MESSAGE value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
   </component>
 </project>

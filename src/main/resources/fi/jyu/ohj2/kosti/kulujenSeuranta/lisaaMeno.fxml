@@ -27,22 +27,22 @@
          </children>
       </HBox>
       <Label text="Kategoria" />
-      <ComboBox fx:id="menoKategoria" onAction="#handleMenoKategoria" prefWidth="150.0" />
-       <Label fx:id="mKategoriaVirheLabel" textFill="red" />
+      <ComboBox fx:id="menoKategoria" prefWidth="150.0" />
+       <Label fx:id="mKategoriaVirheLabel" textFill="#807546"/>
       <Label text="Aihe" />
       <HBox prefHeight="33.0" prefWidth="221.0">
          <children>
-            <TextField fx:id="menoTeksti" onAction="#handleMenoTeksti" prefHeight="25.0" prefWidth="206.0" />
+            <TextField fx:id="menoTeksti" prefHeight="25.0" prefWidth="206.0" />
          </children>
       </HBox>
        <Label fx:id="mAiheVirheLabel" textFill="red" />
       <Label text="Päivämäärä" />
       <DatePicker fx:id="menoPvmValitsin" prefHeight="25.0" prefWidth="129.0" />
-      <CheckBox fx:id="menoCheckbox" mnemonicParsing="false" onAction="#handleMenoCheckbox" text="Pakollinen meno" />
+      <CheckBox fx:id="menoCheckbox" mnemonicParsing="false" text="Pakollinen meno" />
       <Label text="Summa" />
       <HBox prefHeight="24.0" prefWidth="221.0">
          <children>
-            <TextField fx:id="mSumma" onAction="#handleMSumma" prefHeight="25.0" prefWidth="73.0" />
+            <TextField fx:id="mSumma"  prefHeight="25.0" prefWidth="73.0" />
             <Button fx:id="mTallenna" mnemonicParsing="false" onAction="#handleMTallenna" text="Tallenna" textFill="#217512">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />

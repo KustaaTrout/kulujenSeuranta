@@ -26,12 +26,12 @@
          </children>
       </HBox>
       <Label text="Kategoria" />
-      <ComboBox fx:id="tuloKategoria" onAction="#handleTuloKategoria" prefWidth="150.0" />
-       <Label fx:id="kategoriaVirheLabel" textFill="red" />
+      <ComboBox fx:id="tuloKategoria"  prefWidth="150.0" />
+       <Label fx:id="kategoriaVirheLabel" textFill="#807546"/>
       <Label text="Aihe" />
       <HBox prefHeight="36.0" prefWidth="221.0">
          <children>
-            <TextField fx:id="tuloText" onAction="#handleTuloTeksti" prefHeight="25.0" prefWidth="206.0" />
+            <TextField fx:id="tuloText" prefHeight="25.0" prefWidth="206.0" />
          </children>
       </HBox>
        <Label fx:id="aiheVirheLabel" textFill="red" />
@@ -40,7 +40,7 @@
       <Label text="Summa" />
       <HBox prefHeight="24.0" prefWidth="221.0">
          <children>
-            <TextField fx:id="tSumma" onAction="#handleTSumma" prefHeight="25.0" prefWidth="73.0" />
+            <TextField fx:id="tSumma" prefHeight="25.0" prefWidth="73.0" />
             <Button fx:id="tTallenna" mnemonicParsing="false" onAction="#handleTTallenna" text="Tallenna" textFill="#217512">
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />

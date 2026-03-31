@@ -36,26 +36,48 @@ public class LisaaTuloController implements Initializable {
         tuloPvmValitsin.setValue(LocalDate.now());
     }
 
-    // Tapahtumakäsittelijät
-    @FXML
-    private void handleTuloKategoria() {
-        System.out.println("Tulo-kategoria valitsin");
-    }
-    @FXML
-    private void handleTuloTeksti() {
-        System.out.println("Tulo-teksti");
-    }
-    @FXML
-    private void handleTSumma() {
-        System.out.println("Tulo-summa");
-    }
     @FXML
     private void handleTTallenna() {
-        String aihe = tuloText.getText();
+        tyhjennaVirhe();
+        String aihe = tuloText.getText().trim();
         Kategoria kategoria = tuloKategoria.getValue();
-        double summa = Double.parseDouble(tSumma.getText());
+        String summaText = tSumma.getText().trim();
         LocalDate pvm = tuloPvmValitsin.getValue();
         boolean pakollinen = false;
+
+        boolean virhe = false;
+
+        if (kategoria == null) {
+            kategoriaVirheLabel.setText("Etkö halua lisätä kategoriaa?");
+        }
+        if (aihe.isEmpty()) {
+            aiheVirheLabel.setText("Anna aihe!");
+            virhe = true;
+        }
+
+        if (pvm == null) {
+            summaVirheLabel.setText("Valitse päivämäärä!");
+            virhe = true;
+        }
+
+        if(summaText.isEmpty()){
+            summaVirheLabel.setText("Anna summa!");
+            virhe = true;
+        }
+        double summa = 0;
+        if(!summaText.isEmpty()){
+            try {
+                summa = Double.parseDouble(summaText.replace(",", "."));
+                if(summa < 0){
+                    summaVirheLabel.setText("Summa ei voi olla negatiivinen!");
+                    virhe = true;
+                }
+            } catch (NumberFormatException e) {
+                summaVirheLabel.setText("Anna kelvollinen summa!");
+                virhe = true;
+            }
+        }
+        if(virhe) return;
 
         Tapahtuma tapahtuma = new Tapahtuma(
                 pvm,
@@ -73,10 +95,15 @@ public class LisaaTuloController implements Initializable {
     private void handleTPeruuta() {
         suljeIkkuna();
     }
+
+    private void tyhjennaVirhe() {
+        aiheVirheLabel.setText("");
+        kategoriaVirheLabel.setText("");
+        summaVirheLabel.setText("");
+    }
+
     private void suljeIkkuna() {
         Stage stage = (Stage) tPeruuta.getScene().getWindow();
         stage.close();
     }
-
-
 }

@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 public class LisaaMenoController implements Initializable {
 
     private MainController mainController;
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 
     @FXML private ComboBox<Kategoria> menoKategoria;
     @FXML private TextField menoTeksti;
@@ -33,30 +36,49 @@ public class LisaaMenoController implements Initializable {
         );
         menoPvmValitsin.setValue(LocalDate.now());
     }
-    //Tapahtumakäsittelijät
-    @FXML
-    private void handleMenoKategoria(){
-        System.out.println("Meno-kategoria valitsin");
-    }
-    @FXML
-    private void handleMenoTeksti(){
-        System.out.println("Meno-teksti valitsin");
-    }
-    @FXML
-    private void handleMenoCheckbox(){
-        System.out.println("Meno-checkbox valitsin");
-    }
-    @FXML
-    private void handleMSumma(){
-        System.out.println("Meno-summa");
-    }
+
     @FXML
     private void handleMTallenna(){
-        String aihe = menoTeksti.getText();
+        tyhjennaVirhe();
+        String aihe = menoTeksti.getText().trim();
         Kategoria kategoria = menoKategoria.getValue();
-        double summa = Double.parseDouble(mSumma.getText());
+        String summaText = mSumma.getText().trim();
         LocalDate pvm = menoPvmValitsin.getValue();
         boolean pakollinen = menoCheckbox.isSelected();
+
+        boolean virhe = false;
+
+        if (kategoria == null) {
+            mKategoriaVirheLabel.setText("Etkö halua lisätä kategoriaa?");
+        }
+        if (aihe.isEmpty()) {
+            mAiheVirheLabel.setText("Anna aihe!");
+            virhe = true;
+        }
+
+        if (pvm == null) {
+            mSummaVirheLabel.setText("Valitse päivämäärä!");
+            virhe = true;
+        }
+
+        if(summaText.isEmpty()){
+            mSummaVirheLabel.setText("Anna summa!");
+            virhe = true;
+        }
+        double summa = 0;
+        if(!summaText.isEmpty()){
+            try {
+                summa = Double.parseDouble(summaText.replace(",", "."));
+                if(summa < 0){
+                    mSummaVirheLabel.setText("Summa ei voi olla negatiivinen!");
+                    virhe = true;
+                }
+            } catch (NumberFormatException e) {
+                mSummaVirheLabel.setText("Anna kelvollinen summa!");
+                virhe = true;
+            }
+        }
+        if(virhe) return;
 
         Tapahtuma tapahtuma = new Tapahtuma(
                 pvm,
@@ -70,17 +92,18 @@ public class LisaaMenoController implements Initializable {
         suljeIkkuna();
 
     }
+
     @FXML
     private void handleMPeruuta(){
         suljeIkkuna();
     }
-
+    private void tyhjennaVirhe() {
+        mAiheVirheLabel.setText("");
+        mKategoriaVirheLabel.setText("");
+        mSummaVirheLabel.setText("");
+    }
     private void suljeIkkuna() {
         Stage stage = (Stage) mPeruuta.getScene().getWindow();
         stage.close();
-    }
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
