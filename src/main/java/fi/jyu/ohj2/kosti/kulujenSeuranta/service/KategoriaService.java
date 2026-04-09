@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 public class KategoriaService {
 
     private static final ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList();
-
     public static ObservableList<Kategoria> getKategoriat() {
         return kategoriat;
     }
@@ -15,9 +14,12 @@ public class KategoriaService {
     public static void lisaaKategoria(Kategoria kategoria) {
         kategoriat.add(kategoria);
     }
+
     public static void poistaKategoria(Kategoria poistettava, ObservableList<Tapahtuma> tapahtumat) {
         for (Tapahtuma t : tapahtumat) {
-            if (t.getKategoria() != null && t.getKategoria().equals(poistettava)) {
+            if (t.getKategoria() != null &&
+                t.getKategoria().getNimi().equals(poistettava.getNimi()) &&
+                t.getKategoria().getTyyppi() == poistettava.getTyyppi()) {
                 t.setKategoria(null);
             }
         }

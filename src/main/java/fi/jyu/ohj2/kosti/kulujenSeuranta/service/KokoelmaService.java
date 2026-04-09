@@ -28,7 +28,6 @@ public class KokoelmaService {
             File file = new File(TIEDOSTO);
             if(!file.exists() || file.length() == 0){
             Kokoelma kokoelma = new Kokoelma();
-
             kokoelma.setKategoriat(java.util.List.of(
                     new Kategoria("Palkka", Tyyppi.TULO),
                     new Kategoria("Asumistuki", Tyyppi.TULO),

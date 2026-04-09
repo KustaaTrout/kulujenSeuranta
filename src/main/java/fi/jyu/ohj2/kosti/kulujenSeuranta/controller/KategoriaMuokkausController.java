@@ -64,7 +64,10 @@ public class KategoriaMuokkausController implements Initializable {
         if (tulos.isPresent() && tulos.get() == ButtonType.OK) {
             KategoriaService.poistaKategoria(valittu, mainController.getTapahtumat());
             mainController.paivitaTaulukko();
+            mainController.paivitaKategoriat();
+            mainController.tallennaData();
         }
+
     }
 
     @FXML
@@ -76,8 +79,8 @@ public class KategoriaMuokkausController implements Initializable {
 
         Kategoria kategoria = new Kategoria(nimi, tyyppi);
         KategoriaService.lisaaKategoria(kategoria);
+        mainController.paivitaKategoriat();
         mainController.tallennaData();
-
         lisaaUusiText.clear();
         menoVaiTuloBox.setValue(null);
     }
@@ -94,6 +97,5 @@ public class KategoriaMuokkausController implements Initializable {
         Stage stage = (Stage) suljeButton.getScene().getWindow();
         stage.close();
     }
-
 
 }

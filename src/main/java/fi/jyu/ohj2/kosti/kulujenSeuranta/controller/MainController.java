@@ -27,22 +27,27 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    /// Observable-listan luonti tapahtumia varten, sekä FilteredList, joka hoitaa filtteröintiä.
     private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
     private FilteredList<Tapahtuma> suodatettuLista;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tapahtumatTable.setItems(tapahtumat);
+        lataaData();
+
         suodatettuLista = new FilteredList<>(tapahtumat, p -> true);
         tapahtumatTable.setItems(suodatettuLista);
+
         pvmCol.setCellValueFactory(new PropertyValueFactory<>("pvm"));
         summaCol.setCellValueFactory(new PropertyValueFactory<>("summa"));
         aiheCol.setCellValueFactory(new PropertyValueFactory<>("aihe"));
         kategoriaCol.setCellValueFactory(new PropertyValueFactory<>("kategoria"));
-        lataaData();
-        tallennaData();
-    }
 
+        paivitaSummaKentat();
+        paivitaKategoriat();
+    }
+    /// java-FX elementit
     @FXML private DatePicker alkuPvmValitsin;
     @FXML private DatePicker loppuPvmValitsin;
     @FXML private ComboBox<Kategoria> kategoriaBox;
@@ -59,7 +64,7 @@ public class MainController implements Initializable {
     @FXML private TableColumn<Tapahtuma, String> aiheCol;
     @FXML private TableColumn<Tapahtuma, Kategoria> kategoriaCol;
 
-
+    /// Handlerit, jotka avaavat tulon-, menon- ja kategorianmuokkas-ikkunat.
     @FXML
     private void handleLisaaTulo() {
         try {
@@ -83,7 +88,6 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
     @FXML
     private void handleLisaaMeno() {
         try {
@@ -107,22 +111,6 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    private void handlePoistaValittuButton() {
-        Tapahtuma valittu = tapahtumatTable.getSelectionModel().getSelectedItem();
-        if (valittu == null) return;
-
-        Alert varmistus = new Alert(Alert.AlertType.CONFIRMATION);
-        varmistus.setTitle("Haluatko varmasti poistaa tapahtuman?");
-        varmistus.setHeaderText("Poistetaanko?");
-        varmistus.setContentText(valittu.getAihe());
-
-        Optional<ButtonType> tulos = varmistus.showAndWait();
-        if (tulos.isPresent() && tulos.get() == ButtonType.OK) {
-            poistaTapahtuma(valittu);
-        }
-    }
-
     @FXML
     private void handleKategoriaButton(){
         try {
@@ -148,49 +136,99 @@ public class MainController implements Initializable {
 
     }
 
-    @FXML
-    private void handleKategoriaBox (){
-        System.out.println("Kategoria valitsin");
-    }
 
+    /// handleri, joka käsittelee tapahtuman poiston.
     @FXML
-    private void handleVainPakolliset(){
-        if(vainPakollisetCheck.isSelected()) {
-            suodatettuLista.setPredicate(p -> p.isPakollinen());
-        } else {
-            suodatettuLista.setPredicate(p -> true);
+    private void handlePoistaValittuButton() {
+        Tapahtuma valittu = tapahtumatTable.getSelectionModel().getSelectedItem();
+        if (valittu == null) return;
+
+        Alert varmistus = new Alert(Alert.AlertType.CONFIRMATION);
+        varmistus.setTitle("Haluatko varmasti poistaa tapahtuman?");
+        varmistus.setHeaderText("Poistetaanko?");
+        varmistus.setContentText(valittu.getAihe());
+
+        Optional<ButtonType> tulos = varmistus.showAndWait();
+        if (tulos.isPresent() && tulos.get() == ButtonType.OK) {
+            poistaTapahtuma(valittu);
         }
     }
 
+
+    /// Suodatukseen vaikuttavat handlerit, jotka kutsuvat suodataLista()-metodia.
+    @FXML
+    private void handleKategoriaBox (){
+        suodataLista();
+    }
+    @FXML
+    private void handleVainPakolliset(){
+        suodataLista();
+    }
     @FXML
     private void handleAlkuPvmValitsin(){
-        System.out.println("Alku pvm valitsin");
+        suodataLista();
     }
-
     @FXML
     private void handleLoppuPvmValitsin(){
-        System.out.println("Loppu pvm valitsin");
+        suodataLista();
     }
 
-    public ObservableList<Tapahtuma> getTapahtumat() {
-        return tapahtumat;
+    /// Listan filtteröinnit yhtenä metodina, joka käsittelee päivämäärän, pakollisuuden ja kategorian
+    /// mukaan suodatuksen. Päivittää myös summa-kentän vastaamaan filtteröityä listaa
+    private void suodataLista() {
+        LocalDate alku = alkuPvmValitsin.getValue();
+        LocalDate loppu = loppuPvmValitsin.getValue();
+        boolean pakollinen = vainPakollisetCheck.isSelected();
+        Kategoria kategoria = kategoriaBox.getValue();
+
+        suodatettuLista.setPredicate(tapahtuma -> {
+            LocalDate pvm = tapahtuma.getPvm();
+            if (alku != null && pvm.isBefore(alku)) {
+                return false;
+            }
+            if (loppu != null && pvm.isAfter(loppu)) {
+                return false;
+            }
+            if (pakollinen && !tapahtuma.isPakollinen()){
+                return false;
+            }
+            if(kategoria != null && !"Kaikki".equals(kategoria.getNimi())){
+                if (tapahtuma.getKategoria() == null  ||
+                    !tapahtuma.getKategoria().getNimi().equals(kategoria.getNimi())) {
+                 return false;
+                }
+            }
+            return true;
+        });
+        paivitaSummaKentat();
     }
 
+    public void paivitaKategoriat(){
+
+        ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList();
+        kategoriat.add(new Kategoria("Kaikki", null));
+        kategoriat.addAll(KategoriaService.getKategoriat());
+        kategoriaBox.setItems(kategoriat);
+        kategoriaBox.setValue(kategoriat.getFirst());
+        suodataLista();
+    }
+
+    /// tapahtuman lisäys-metodi
     public void lisaaTapahtuma(Tapahtuma tapahtuma) {
         tapahtumat.add(tapahtuma);
         paivitaTaulukko();
-        PaivitaSummaKentat();
+        paivitaSummaKentat();
         tallennaData();
     }
-
+    /// tapahtuman poisto-metodi
     public void poistaTapahtuma(Tapahtuma poistettava) {
         if (poistettava == null) return;
         tapahtumat.remove(poistettava);
         paivitaTaulukko();
-        PaivitaSummaKentat();
+        paivitaSummaKentat();
         tallennaData();
     }
-
+    /// taulukon virkistys-metodi
     public void paivitaTaulukko() {
         tapahtumatTable.refresh();
     }
@@ -213,7 +251,7 @@ public class MainController implements Initializable {
         KokoelmaService.tallenna(data);
     }
 
-    public void PaivitaSummaKentat() {
+    public void paivitaSummaKentat() {
         double tulot = suodatettuLista.stream()
                 .filter(t -> t.getTyyppi() == Tyyppi.TULO)
                 .mapToDouble(Tapahtuma::getSumma)
@@ -227,4 +265,8 @@ public class MainController implements Initializable {
         tulotYhteensaField.setText(String.format("%.2f", tulot));
         menotYhteensaField.setText(String.format("%.2f", menot));
     }
+
+    public ObservableList<Tapahtuma> getTapahtumat() { return tapahtumat; }
+
+
 }

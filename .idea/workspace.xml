@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä.">
-      <change afterPath="$PROJECT_DIR$/../../ohj2.iml" afterDir="false" />
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +63,20 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kosti/koodi/dbHarkka&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -82,8 +90,13 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="/usr/lib/jvm/java-1.25.0-openjdk-amd64" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="fi.jyu.ohj2.kosti.kulujenSeuranta.Main" />
       <module name="kulujenSeuranta" />
+      <selectedOptions>
+        <option name="environmentVariables" visible="false" />
+      </selectedOptions>
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="fi.jyu.ohj2.kosti.kulujenSeuranta.*" />
@@ -93,6 +106,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
@@ -120,6 +142,14 @@
       <workItem from="1773751050741" duration="47652000" />
       <workItem from="1774849815746" duration="14189000" />
       <workItem from="1774881420077" duration="1277000" />
+      <workItem from="1774961044070" duration="466000" />
+      <workItem from="1774961547215" duration="2188000" />
+      <workItem from="1775562941116" duration="33000" />
+      <workItem from="1775570733592" duration="2000" />
+      <workItem from="1775673086772" duration="13000" />
+      <workItem from="1775673435838" duration="632000" />
+      <workItem from="1775721499717" duration="13706000" />
+      <workItem from="1775746747867" duration="299000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -195,6 +225,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$USER_HOME$" />
+    </ignored-roots>
     <MESSAGE value="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille." />
     <MESSAGE value="Lisätty controlleri-luokat ja handler-metodeja menojen ja tulojen lisäämiseen" />
     <MESSAGE value="Lisätty kategorioiden muokkaus-ikkuna, controlleri, fx:id:t ja toteutettu ikkunoille sulkemis-metodit." />
@@ -203,6 +236,7 @@
     <MESSAGE value="Päivitetty kategorioiden muokkaus-ikkunan näkymää.&#10;Lisätty kategorioiden poisto ja lisäys-ominaisuudet ja poiston varmistus-ikkuna." />
     <MESSAGE value="Lisätty lataus ja tallennus json-tiedostoon. &#10;Luotu Kokoelma-luokka ja KokoelmaService, joka käsittelee tallennuksen Jackson-kirjaston avulla. Oletuskategorioiden kovakoodaukset siirretty lataa()-metodin yhteyteen." />
     <MESSAGE value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
-    <option name="LAST_COMMIT_MESSAGE" value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
+    <MESSAGE value="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi" />
   </component>
 </project>
