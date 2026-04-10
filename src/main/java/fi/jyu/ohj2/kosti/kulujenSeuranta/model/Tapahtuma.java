@@ -31,7 +31,6 @@ public class Tapahtuma {
     public void setAihe(String aihe) { this.aihe = aihe; }
     public void setKategoria(Kategoria kategoria) { this.kategoria = kategoria; }
     public void setSumma(double summa) { this.summa = summa; }
-    public void setPakollinen(boolean pakollinen) { this.pakollinen = pakollinen; }
     public void setTyyppi(Tyyppi tyyppi) { this.tyyppi = tyyppi; }
 
 }

@@ -22,7 +22,6 @@ public class LisaaMenoController implements Initializable {
     @FXML private TextField menoTeksti;
     @FXML private CheckBox menoCheckbox;
     @FXML private TextField mSumma;
-    @FXML private Button mTallenna;
     @FXML private Button mPeruuta;
     @FXML private DatePicker menoPvmValitsin;
     @FXML private Label mKategoriaVirheLabel;
@@ -46,6 +45,7 @@ public class LisaaMenoController implements Initializable {
         LocalDate pvm = menoPvmValitsin.getValue();
         boolean pakollinen = menoCheckbox.isSelected();
 
+        //noinspection DuplicatedCode
         boolean virhe = false;
 
         if (kategoria == null) {

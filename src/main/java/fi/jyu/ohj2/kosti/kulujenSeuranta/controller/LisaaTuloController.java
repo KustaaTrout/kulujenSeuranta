@@ -21,13 +21,13 @@ public class LisaaTuloController implements Initializable {
     @FXML private ComboBox<Kategoria> tuloKategoria;
     @FXML private TextField tuloText;
     @FXML private TextField tSumma;
-    @FXML private Button tTallenna;
     @FXML private Button tPeruuta;
     @FXML private DatePicker tuloPvmValitsin;
     @FXML private Label kategoriaVirheLabel;
     @FXML private Label aiheVirheLabel;
     @FXML private Label summaVirheLabel;
 
+    ///  Initialize, jossa asetetaan arvot kategoria-valitsimeen ja asetetaan oletuspäivämääräksi kuluva päivä.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tuloKategoria.setItems(
@@ -36,6 +36,7 @@ public class LisaaTuloController implements Initializable {
         tuloPvmValitsin.setValue(LocalDate.now());
     }
 
+    ///  Tallennetaan tapahtuma ja suljetaan ikkuna, tarkistetaan ettei käyttäjä syötä vääriä arvoja.
     @FXML
     private void handleTTallenna() {
         tyhjennaVirhe();
@@ -45,6 +46,7 @@ public class LisaaTuloController implements Initializable {
         LocalDate pvm = tuloPvmValitsin.getValue();
         boolean pakollinen = false;
 
+        //noinspection DuplicatedCode
         boolean virhe = false;
 
         if (kategoria == null) {
@@ -96,12 +98,14 @@ public class LisaaTuloController implements Initializable {
         suljeIkkuna();
     }
 
+    ///  Virhelabeleiden tyhjennysmetodi
     private void tyhjennaVirhe() {
         aiheVirheLabel.setText("");
         kategoriaVirheLabel.setText("");
         summaVirheLabel.setText("");
     }
 
+    ///  Ikkunan sulkeminen, tätä kutsutaan tallennuksen ja peruutuksen yhteydessä.
     private void suljeIkkuna() {
         Stage stage = (Stage) tPeruuta.getScene().getWindow();
         stage.close();

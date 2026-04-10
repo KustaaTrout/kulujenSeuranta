@@ -22,13 +22,9 @@ public class KategoriaMuokkausController implements Initializable {
     @FXML
     private ListView<Kategoria> tuloKategoriaList;
     @FXML
-    private Button poistaValintaButton;
-    @FXML
     private TextField lisaaUusiText;
     @FXML
     private ComboBox<Tyyppi> menoVaiTuloBox;
-    @FXML
-    private Button lisaaUusiButton;
     @FXML
     private Button suljeButton;
 
@@ -42,6 +38,7 @@ public class KategoriaMuokkausController implements Initializable {
         menoVaiTuloBox.getItems().addAll(Tyyppi.values());
     }
 
+    ///  Kategorian poisto, tarkistetaan onko kyseessä tulo vai meno ja varmistetaan käyttäjältä poisto.
     @FXML
     private void handlePoista() {
         Kategoria valittuTulo = tuloKategoriaList.getSelectionModel().getSelectedItem();
@@ -70,6 +67,7 @@ public class KategoriaMuokkausController implements Initializable {
 
     }
 
+    ///  Uuden kategorian lisäys
     @FXML
     private void handleLisaaUusi(){
         String nimi = lisaaUusiText.getText();
@@ -84,6 +82,7 @@ public class KategoriaMuokkausController implements Initializable {
         lisaaUusiText.clear();
         menoVaiTuloBox.setValue(null);
     }
+    ///  Kutsutaan handleLisaaUusi()-metodia, jotta enterin painallus toimii OK:na
     @FXML
     private void handleLisaaUusiText() {
         handleLisaaUusi();

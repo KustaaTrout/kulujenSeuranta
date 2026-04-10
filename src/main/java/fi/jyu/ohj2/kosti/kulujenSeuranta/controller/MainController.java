@@ -36,7 +36,7 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lataaData();
 
-        suodatettuLista = new FilteredList<>(tapahtumat, p -> true);
+        suodatettuLista = new FilteredList<>(tapahtumat, _ -> true);
         tapahtumatTable.setItems(suodatettuLista);
 
         pvmCol.setCellValueFactory(new PropertyValueFactory<>("pvm"));
@@ -51,14 +51,10 @@ public class MainController implements Initializable {
     @FXML private DatePicker alkuPvmValitsin;
     @FXML private DatePicker loppuPvmValitsin;
     @FXML private ComboBox<Kategoria> kategoriaBox;
-    @FXML private Button kategoriaButton;
     @FXML private CheckBox vainPakollisetCheck;
     @FXML private TableView<Tapahtuma> tapahtumatTable;
     @FXML private TextField menotYhteensaField;
     @FXML private TextField tulotYhteensaField;
-    @FXML private Button lisaaTuloButton;
-    @FXML private Button lisaaMenoButton;
-    @FXML private Button PoistaValittuButton;
     @FXML private TableColumn<Tapahtuma, LocalDate> pvmCol;
     @FXML private TableColumn<Tapahtuma, Double> summaCol;
     @FXML private TableColumn<Tapahtuma, String> aiheCol;
@@ -193,10 +189,8 @@ public class MainController implements Initializable {
                 return false;
             }
             if(kategoria != null && !"Kaikki".equals(kategoria.getNimi())){
-                if (tapahtuma.getKategoria() == null  ||
-                    !tapahtuma.getKategoria().getNimi().equals(kategoria.getNimi())) {
-                 return false;
-                }
+                return tapahtuma.getKategoria() != null && // ide halusi korjata tämän hienoksi
+                        tapahtuma.getKategoria().getNimi().equals(kategoria.getNimi());
             }
             return true;
         });

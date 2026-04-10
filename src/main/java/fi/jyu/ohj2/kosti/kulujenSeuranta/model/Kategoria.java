@@ -12,7 +12,6 @@ public class Kategoria {
 
     public String getNimi() {return nimi;}
     public Tyyppi getTyyppi() {return tyyppi;}
-    public void setNimi(String nimi) {this.nimi = nimi;}
     public void setTyyppi(Tyyppi tyyppi) {this.tyyppi = tyyppi;}
 
     @Override
