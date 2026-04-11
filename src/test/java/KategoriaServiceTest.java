@@ -7,20 +7,21 @@ import javafx.collections.ObservableList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class KategoriaServiceTest {
 
 
     /// Tyhjennetään lista ennen testausta.
     @BeforeEach
-    void tyhjenna(){
+    void tyhjenna() {
         KategoriaService.getKategoriat().clear();
     }
 
     ///  Testataan kategorian lisääminen.
     @Test
-    void kategorianLisaysToimii(){
+    void kategorianLisaysToimii() {
         KategoriaService.lisaaKategoria(new Kategoria("testi", Tyyppi.MENO));
         KategoriaService.lisaaKategoria(new Kategoria("testi2", Tyyppi.TULO));
 
@@ -56,7 +57,7 @@ public class KategoriaServiceTest {
 
     ///  Testataan saman nimisten kategorioiden poistoa, joissa eri tyyppi.
     @Test
-    void kategorianPoistoTyypinMukaanToimii(){
+    void kategorianPoistoTyypinMukaanToimii() {
         Kategoria testi1 = new Kategoria("testi", Tyyppi.MENO);
         Kategoria testi2 = new Kategoria("testi", Tyyppi.TULO);
 

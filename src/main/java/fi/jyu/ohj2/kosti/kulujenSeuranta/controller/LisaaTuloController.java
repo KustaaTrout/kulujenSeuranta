@@ -1,4 +1,5 @@
 package fi.jyu.ohj2.kosti.kulujenSeuranta.controller;
+
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tyyppi;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -14,20 +16,33 @@ import java.util.ResourceBundle;
 public class LisaaTuloController implements Initializable {
 
     private MainController mainController;
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    @FXML private ComboBox<Kategoria> tuloKategoria;
-    @FXML private TextField tuloText;
-    @FXML private TextField tSumma;
-    @FXML private Button tPeruuta;
-    @FXML private DatePicker tuloPvmValitsin;
-    @FXML private Label kategoriaVirheLabel;
-    @FXML private Label aiheVirheLabel;
-    @FXML private Label summaVirheLabel;
+    private Tapahtuma muokattavaTapahtuma;
 
-    ///  Initialize, jossa asetetaan arvot kategoria-valitsimeen ja asetetaan oletuspäivämääräksi kuluva päivä.
+    @FXML
+    private ComboBox<Kategoria> tuloKategoria;
+    @FXML
+    private TextField tuloText;
+    @FXML
+    private TextField tSumma;
+    @FXML
+    private Button tPeruuta;
+    @FXML
+    private Button tTallenna;
+    @FXML
+    private DatePicker tuloPvmValitsin;
+    @FXML
+    private Label kategoriaVirheLabel;
+    @FXML
+    private Label aiheVirheLabel;
+    @FXML
+    private Label summaVirheLabel;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tuloKategoria.setItems(
@@ -36,7 +51,8 @@ public class LisaaTuloController implements Initializable {
         tuloPvmValitsin.setValue(LocalDate.now());
     }
 
-    ///  Tallennetaan tapahtuma ja suljetaan ikkuna, tarkistetaan ettei käyttäjä syötä vääriä arvoja.
+    // käsitellään menon tallennus ja validoidaan syötteet ja varoitetaan käyttäjää vääristä/puutteellisista syötteistä.
+    // käsitellään myös tapahtuman muokkaamisen tallennus.
     @FXML
     private void handleTTallenna() {
         tyhjennaVirhe();
@@ -62,15 +78,15 @@ public class LisaaTuloController implements Initializable {
             virhe = true;
         }
 
-        if(summaText.isEmpty()){
+        if (summaText.isEmpty()) {
             summaVirheLabel.setText("Anna summa!");
             virhe = true;
         }
         double summa = 0;
-        if(!summaText.isEmpty()){
+        if (!summaText.isEmpty()) {
             try {
                 summa = Double.parseDouble(summaText.replace(",", "."));
-                if(summa < 0){
+                if (summa < 0) {
                     summaVirheLabel.setText("Summa ei voi olla negatiivinen!");
                     virhe = true;
                 }
@@ -79,8 +95,19 @@ public class LisaaTuloController implements Initializable {
                 virhe = true;
             }
         }
-        if(virhe) return;
+        if (virhe) return;
 
+        if (muokattavaTapahtuma != null) {
+            muokattavaTapahtuma.setAihe(aihe);
+            muokattavaTapahtuma.setKategoria(kategoria);
+            muokattavaTapahtuma.setPvm(pvm);
+            muokattavaTapahtuma.setSumma(summa);
+            mainController.tallennaData();
+            mainController.paivitaTaulukko();
+            mainController.paivitaSummaKentat();
+            suljeIkkuna();
+            return;
+        }
         Tapahtuma tapahtuma = new Tapahtuma(
                 pvm,
                 aihe,
@@ -93,19 +120,31 @@ public class LisaaTuloController implements Initializable {
         suljeIkkuna();
     }
 
+    // tapahtuman muokkaus ja muokattavien arvojen asettaminen muokkausikkunassa.
+    public void muokkaaTapahtumaa(Tapahtuma tapahtuma) {
+        if (tapahtuma != null) {
+            tTallenna.setText("Tallenna muutokset");
+            muokattavaTapahtuma = tapahtuma;
+            tuloText.setText(tapahtuma.getAihe());
+            tuloKategoria.setValue(tapahtuma.getKategoria());
+            tuloPvmValitsin.setValue(tapahtuma.getPvm());
+            tSumma.setText(String.valueOf(tapahtuma.getSumma()));
+        }
+    }
+
     @FXML
     private void handleTPeruuta() {
         suljeIkkuna();
     }
 
-    ///  Virhelabeleiden tyhjennysmetodi
+
     private void tyhjennaVirhe() {
         aiheVirheLabel.setText("");
         kategoriaVirheLabel.setText("");
         summaVirheLabel.setText("");
     }
 
-    ///  Ikkunan sulkeminen, tätä kutsutaan tallennuksen ja peruutuksen yhteydessä.
+
     private void suljeIkkuna() {
         Stage stage = (Stage) tPeruuta.getScene().getWindow();
         stage.close();

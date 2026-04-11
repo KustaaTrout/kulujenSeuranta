@@ -2,8 +2,11 @@ import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Kategoria;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tapahtuma;
 import fi.jyu.ohj2.kosti.kulujenSeuranta.model.Tyyppi;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class TapahtumaTest {
@@ -15,12 +18,14 @@ public class TapahtumaTest {
         tapahtuma.setAihe("kissa");
         assertEquals("kissa", tapahtuma.getAihe());
     }
+
     @Test
     void getSummaToimii() {
         Tapahtuma tapahtuma = new Tapahtuma();
         tapahtuma.setSumma(100);
         assertEquals(100, tapahtuma.getSumma());
     }
+
     @Test
     void getPvmToimii() {
         Tapahtuma tapahtuma = new Tapahtuma();
@@ -45,8 +50,6 @@ public class TapahtumaTest {
         assertEquals(Tyyppi.MENO, tapahtuma.getTyyppi());
 
     }
-
-
 
 
 }

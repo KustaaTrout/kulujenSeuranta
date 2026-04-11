@@ -1,11 +1,11 @@
 package fi.jyu.ohj2.kosti.kulujenSeuranta;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class App extends Application {
 
@@ -15,7 +15,7 @@ public class App extends Application {
         Scene scene = new Scene(loader.load());
 
         stage.setScene(scene);
-        stage.setTitle("Kulujen seuranta");
+        stage.setTitle("Kulujen seuranta by KJS");
         stage.show();
     }
 

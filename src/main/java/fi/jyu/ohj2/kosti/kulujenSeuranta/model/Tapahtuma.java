@@ -18,19 +18,56 @@ public class Tapahtuma {
         this.pakollinen = pakollinen;
         this.tyyppi = tyyppi;
     }
-    public Tapahtuma() {}
 
-    public LocalDate getPvm() {return pvm;}
-    public String getAihe() {return aihe;}
-    public Kategoria getKategoria() {return kategoria;}
-    public double getSumma() {return summa;}
-    public Tyyppi getTyyppi() {return tyyppi;}
-    public boolean isPakollinen() {return pakollinen;}
+    public Tapahtuma() {
+    }
 
-    public void setPvm(LocalDate pvm) { this.pvm = pvm; }
-    public void setAihe(String aihe) { this.aihe = aihe; }
-    public void setKategoria(Kategoria kategoria) { this.kategoria = kategoria; }
-    public void setSumma(double summa) { this.summa = summa; }
-    public void setTyyppi(Tyyppi tyyppi) { this.tyyppi = tyyppi; }
+    public LocalDate getPvm() {
+        return pvm;
+    }
+
+    public void setPvm(LocalDate pvm) {
+        this.pvm = pvm;
+    }
+
+    public String getAihe() {
+        return aihe;
+    }
+
+    public void setAihe(String aihe) {
+        this.aihe = aihe;
+    }
+
+    public Kategoria getKategoria() {
+        return kategoria;
+    }
+
+    public void setKategoria(Kategoria kategoria) {
+        this.kategoria = kategoria;
+    }
+
+    public double getSumma() {
+        return summa;
+    }
+
+    public void setSumma(double summa) {
+        this.summa = summa;
+    }
+
+    public Tyyppi getTyyppi() {
+        return tyyppi;
+    }
+
+    public void setTyyppi(Tyyppi tyyppi) {
+        this.tyyppi = tyyppi;
+    }
+
+    public boolean isPakollinen() {
+        return pakollinen;
+    }
+
+    public void setPakollinen(boolean pakollinen) {
+        this.pakollinen = pakollinen;
+    }
 
 }

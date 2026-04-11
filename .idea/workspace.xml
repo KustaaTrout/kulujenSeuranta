@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Suunnitelma/KAYTTOLIITTYMA.md" beforeDir="false" afterPath="$PROJECT_DIR$/Suunnitelma/KAYTTOLIITTYMA.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tyyppi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tyyppi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/KategoriaServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/KategoriaServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TapahtumaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TapahtumaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +274,23 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1774854449488</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään.">
+      <option name="closed" value="true" />
+      <created>1775822789660</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1775822789660</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään.">
+      <option name="closed" value="true" />
+      <created>1775822853567</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1775822853567</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +320,7 @@
     <MESSAGE value="Lisätty lataus ja tallennus json-tiedostoon. &#10;Luotu Kokoelma-luokka ja KokoelmaService, joka käsittelee tallennuksen Jackson-kirjaston avulla. Oletuskategorioiden kovakoodaukset siirretty lataa()-metodin yhteyteen." />
     <MESSAGE value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
     <MESSAGE value="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi" />
+    <MESSAGE value="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään." />
   </component>
 </project>
