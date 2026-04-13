@@ -29,14 +29,10 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    /// Observable-listan luonti tapahtumia varten, sekä FilteredList, joka hoitaa filtteröintiä.
+    // Observable-listan luonti tapahtumia varten, sekä FilteredList, joka hoitaa filtteröintiä.
     private final ObservableList<Tapahtuma> tapahtumat = FXCollections.observableArrayList();
     private FilteredList<Tapahtuma> suodatettuLista;
 
-
-    // java-FX elementit
-    @FXML
-    private TableColumn<Tapahtuma, Tyyppi> tyyppiCol;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,6 +50,10 @@ public class MainController implements Initializable {
         paivitaSummaKentat();
         paivitaKategoriat();
     }
+
+    // java-FX elementit
+    @FXML
+    private TableColumn<Tapahtuma, Tyyppi> tyyppiCol;
     @FXML
     private DatePicker alkuPvmValitsin;
     @FXML
