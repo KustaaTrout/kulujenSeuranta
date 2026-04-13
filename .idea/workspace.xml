@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään.">
+    <list default="true" id="077606de-daad-4e45-9d32-cfb02b1195a6" name="Changes" comment="Lisätty tapahtumien muokkaus käyttämällä lisäysikkunoita. Muokkaus käsitellään lisääMeno() ja lisääTulo()-metodeja käyttäen, erilliset metodit tuntuivat liialta toistolta. &#10;Lisätty kategorioiden muokkaukseen mahdollisuus muuttaa kategorian nimeä ja lisätty esto duplikaattien luomiselle, jos sama tyyppi(MENO/TULO).&#10;Fiksattu muutenkin validointeja tarkemmaksi.&#10;Poistettu loputkin IDE:n varoitukset (mm lambda-lauseista muuttujien nimet _-muotoon).&#10;UI:n layouttia hieman tweakattu muokkausikkunoissa.&#10;&#10;Ajettu Reformat idessä ja fiksattu kommentteja">
+      <change afterPath="$PROJECT_DIR$/docs/kategoria.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/meno.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/tulo.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Suunnitelma/KAYTTOLIITTYMA.md" beforeDir="false" afterPath="$PROJECT_DIR$/Suunnitelma/KAYTTOLIITTYMA.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/KategoriaMuokkausController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaMenoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/LisaaTuloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/readme.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kategoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Kokoelma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/model/Tapahtuma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KategoriaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fi/jyu/ohj2/kosti/kulujenSeuranta/service/KokoelmaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/kategoriaMuokkaus.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaMeno.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/lisaaTulo.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fi/jyu/ohj2/kosti/kulujenSeuranta/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/KategoriaServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/KategoriaServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TapahtumaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TapahtumaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,10 +42,10 @@
     &quot;accountId&quot;: &quot;4176dc42-8f5a-4d78-ab63-8f03c92619bd&quot;
   }
 }</component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -86,7 +74,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/kosti/koodi/dbHarkka",
     "node.js.detected.package.eslint": "true",
@@ -97,12 +87,15 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="C:\kurssit\ohj2\kulujenSeuranta\kulujenSeuranta\Suunnitelma" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -192,8 +185,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28238.7" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.33" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.33" />
       </set>
     </attachedChunks>
   </component>
@@ -217,6 +210,8 @@
       <workItem from="1775673435838" duration="632000" />
       <workItem from="1775721499717" duration="13706000" />
       <workItem from="1775746747867" duration="299000" />
+      <workItem from="1776017074707" duration="38000" />
+      <workItem from="1776053914879" duration="8270000" />
     </task>
     <task id="LOCAL−00001" summary="Lisätty komponenteille fx:id-tunnisteet ja tapahtumakäsittelijöitä. Lisätty myös fxml:t menojen ja tulojen lisäämis-ikkunoille.">
       <option name="closed" value="true" />
@@ -290,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775822853567</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Lisätty tapahtumien muokkaus käyttämällä lisäysikkunoita. Muokkaus käsitellään lisääMeno() ja lisääTulo()-metodeja käyttäen, erilliset metodit tuntuivat liialta toistolta. &#10;Lisätty kategorioiden muokkaukseen mahdollisuus muuttaa kategorian nimeä ja lisätty esto duplikaattien luomiselle, jos sama tyyppi(MENO/TULO).&#10;Fiksattu muutenkin validointeja tarkemmaksi.&#10;Poistettu loputkin IDE:n varoitukset (mm lambda-lauseista muuttujien nimet _-muotoon).&#10;UI:n layouttia hieman tweakattu muokkausikkunoissa.&#10;&#10;Ajettu Reformat idessä ja fiksattu kommentteja">
+      <option name="closed" value="true" />
+      <created>1775934022329</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1775934022329</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +324,7 @@
     <MESSAGE value="Lisätty tapahtuman poistamiselle Button ja tehty sille metodi. Toimii.&#10;Tehty menojen ja tulojen summaus ja laitettu ne näkymään yhteensä-kentissä.&#10;Lisätty filtteröinti vain pakolliset-tapahtumille käyttäen FilteredListiä." />
     <MESSAGE value="Lsätty filtteröinti ajan, kategorian ja pakollisuuden mukaan. Fiksattu bugeja kategorioiden muokkaamisesta ja poistamisesta. Korjattu initializeä ja lisätty kategorioidenpäivitys-metodi. Filtteröinti toimii ja summat alhaalla päivittyvät filtterin mukaan. Poistettu turhaa koodia ja lisätty hieman kommentteja.&#10;&#10;Todo:&#10;Testit&#10;kommentit minttiin&#10;Siisti koodi" />
     <MESSAGE value="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tehty testejä jUnitilla, käyty varoitukset ja ilmoitukset läpi (pari suppressia) ja muuten IDE:n ehdottamia korjauksia.&#10;Poistettu turhia FXML-palikoita koodista, joilla ei tehdä koodissa mitään." />
+    <MESSAGE value="Lisätty tapahtumien muokkaus käyttämällä lisäysikkunoita. Muokkaus käsitellään lisääMeno() ja lisääTulo()-metodeja käyttäen, erilliset metodit tuntuivat liialta toistolta. &#10;Lisätty kategorioiden muokkaukseen mahdollisuus muuttaa kategorian nimeä ja lisätty esto duplikaattien luomiselle, jos sama tyyppi(MENO/TULO).&#10;Fiksattu muutenkin validointeja tarkemmaksi.&#10;Poistettu loputkin IDE:n varoitukset (mm lambda-lauseista muuttujien nimet _-muotoon).&#10;UI:n layouttia hieman tweakattu muokkausikkunoissa.&#10;&#10;Ajettu Reformat idessä ja fiksattu kommentteja" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lisätty tapahtumien muokkaus käyttämällä lisäysikkunoita. Muokkaus käsitellään lisääMeno() ja lisääTulo()-metodeja käyttäen, erilliset metodit tuntuivat liialta toistolta. &#10;Lisätty kategorioiden muokkaukseen mahdollisuus muuttaa kategorian nimeä ja lisätty esto duplikaattien luomiselle, jos sama tyyppi(MENO/TULO).&#10;Fiksattu muutenkin validointeja tarkemmaksi.&#10;Poistettu loputkin IDE:n varoitukset (mm lambda-lauseista muuttujien nimet _-muotoon).&#10;UI:n layouttia hieman tweakattu muokkausikkunoissa.&#10;&#10;Ajettu Reformat idessä ja fiksattu kommentteja" />
   </component>
 </project>

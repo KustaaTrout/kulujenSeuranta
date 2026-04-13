@@ -34,6 +34,10 @@ public class MainController implements Initializable {
     private FilteredList<Tapahtuma> suodatettuLista;
 
 
+    // java-FX elementit
+    @FXML
+    private TableColumn<Tapahtuma, Tyyppi> tyyppiCol;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lataaData();
@@ -41,6 +45,7 @@ public class MainController implements Initializable {
         suodatettuLista = new FilteredList<>(tapahtumat, _ -> true);
         tapahtumatTable.setItems(suodatettuLista);
 
+        tyyppiCol.setCellValueFactory(new PropertyValueFactory<>("tyyppi"));
         pvmCol.setCellValueFactory(new PropertyValueFactory<>("pvm"));
         summaCol.setCellValueFactory(new PropertyValueFactory<>("summa"));
         aiheCol.setCellValueFactory(new PropertyValueFactory<>("aihe"));
@@ -49,8 +54,6 @@ public class MainController implements Initializable {
         paivitaSummaKentat();
         paivitaKategoriat();
     }
-
-    // java-FX elementit
     @FXML
     private DatePicker alkuPvmValitsin;
     @FXML

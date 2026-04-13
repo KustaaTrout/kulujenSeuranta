@@ -53,6 +53,7 @@
 
             <TableView fx:id="tapahtumatTable" VBox.vgrow="ALWAYS">
                 <columns>
+                    <TableColumn fx:id="tyyppiCol" text="Tyyppi"/>
                     <TableColumn fx:id="pvmCol" prefWidth="95.0" text="Pvm"/>
                     <TableColumn fx:id="summaCol" prefWidth="105.0" text="Summa"/>
                     <TableColumn fx:id="aiheCol" prefWidth="176.0" text="Aihe"/>
