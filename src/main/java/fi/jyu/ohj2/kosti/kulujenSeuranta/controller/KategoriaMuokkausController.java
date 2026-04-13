@@ -52,7 +52,7 @@ public class KategoriaMuokkausController implements Initializable {
         });
     }
 
-    ///  Kategorian poisto, tarkistetaan onko kyseessä tulo vai meno ja varmistetaan käyttäjältä poisto.
+    //  Kategorian poisto, tarkistetaan onko kyseessä tulo vai meno ja varmistetaan käyttäjältä poisto.
     @FXML
     private void handlePoista() {
         Kategoria valittuTulo = tuloKategoriaList.getSelectionModel().getSelectedItem();
@@ -82,7 +82,7 @@ public class KategoriaMuokkausController implements Initializable {
 
     }
 
-    ///  Uuden kategorian lisäys
+    //  Uuden kategorian lisäys
     @FXML
     private void handleLisaaUusi() {
         kategoriaVirheLabel.setText("");
@@ -132,7 +132,6 @@ public class KategoriaMuokkausController implements Initializable {
 
     }
 
-    ///  Kutsutaan handleLisaaUusi()-metodia, jotta enterin painallus toimii OK:na
     @FXML
     private void handleLisaaUusiText() {
         handleLisaaUusi();
